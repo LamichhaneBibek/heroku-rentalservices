@@ -1,0 +1,127 @@
+<html>
+	<head>
+		<!-- ===== Iconscout CSS ===== -->
+ 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" type='text/css'>
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 		<link rel="stylesheet" type="text/css" href="static/css/register_style.css">
+		<!-- <style type="text/css">
+			
+		</style> -->
+	</head>
+	<body>
+		
+		<!-- <div class="box"> -->
+		<div class="container">	
+			<h1>Register</h1>
+			<form method="POST" action=""> 
+				{{ form.hidden_tag() }}
+				{{ form.csrf_token }}
+				
+				<!-- first name section -->
+				<div class="row">	
+					<i class="uil uil-user"></i> {{ form.firstname.label(class="text") }}
+				
+					<br>
+					{{ form.firstname(class="in" ) }}
+					{% for error in form.firstname.errors %}
+					<ul type="*">
+						<li>{{error}}</li>
+					</ul>
+					{% endfor %}
+			
+				</div>	
+				<br>
+				<!-- section last name -->
+				<div class="row">	
+					<i class="uil uil-user"></i> {{ form.lastname.label(class="text") }}
+				
+					<br>
+					{{ form.lastname(class="in") }}
+					{% for error in form.lastname.errors %}
+					<ul type="*">
+						<li>{{error}}</li>
+					</ul>
+					{% endfor %}
+			
+				</div>	
+				<br>
+
+				<!-- address section -->
+				<div class="row">	
+
+					<i class="uil uil-home icon"></i> {{ form.address.label }}
+					<br>
+					{{ form.address(class="in") }}
+					{% for error in form.address.errors %}
+					<ul type="*">
+						<li>{{error}}</li>
+					</ul>
+					{% endfor %}
+				</div>
+				<br>
+
+				<!-- city section -->
+				<div class="row">	
+
+					{{ form.district.label }}
+					<br>
+					{{ form.district(class="in") }}
+					{% for error in form.district.errors %}
+					<ul type="*">
+						<li>{{error}}</li>
+					</ul>
+					{% endfor %}
+				</div>
+				<br>
+				<!-- mobile number section -->
+				
+				<label >Mobile Number (format:98######## )</label>				
+				<input type="tel" class="in" name="phone_number" placeholder="98########" required pattern="[0-9]{4}[0-9]{6}" >
+				<br>
+				<br>
+
+
+				<!-- email section -->
+				<div class="row">	
+
+					 <i class="uil uil-envelope icon"></i> {{ form.email.label}}
+					<br>
+					{{ form.email(class="in")}}
+					{% for error in form.email.errors %}
+						<ul type="*">
+							<li>{{error}}</li>
+						</ul>			
+					{% endfor %}
+				</div>		 
+				<br>
+
+				<!-- password section -->
+				<div class="row">	
+					<i class="uil uil-lock icon"></i> {{ form.password.label}}
+					<br>
+					{{ form.password(class="in")}}
+				</div>
+				<br>
+
+
+				<!-- confirm password section -->
+				<div class="row">	
+
+					<i class="uil uil-lock icon"></i> {{ form.confirm_password.label}}
+					<br>
+					{{ form.confirm_password(class="in")}}
+					{% for error in form.confirm_password.errors %}
+						<ul type="*">
+							<li>{{error}}</li>
+						</ul>			
+					{% endfor %}
+				</div>
+				<br>
+				{{form.submit(class="submit")}}
+				<br>
+
+			</form>
+		</div>
+	</body>
+</html>
+

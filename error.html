@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Chat - Error Detected</title>
+<link rel="stylesheet" href="{{url_for('static',filename='/css/maxcdn.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='/css/main.css')}}">
+{% endblock %}
+
+{% block body %}
+<a href="/chat" name="20"><h5>&#8592 Back</h5></a>
+<div class="upload-img">
+  <div class="row heading">
+      <div class="col-sm-8 col-xs-7 heading-name">
+          <div class="heading-name-meta">Error Detected</div>
+      </div>
+  </div>
+  <div class="profile-userpic">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRRtlV1EnmAqV5JnQkn_0YFB1UzXNvcWuQtZA&usqp=CAU" id="img1" class="img-responsive" alt="Error"/>
+  </div><hr>
+  <h3>{{errorMsg}}</h3>
+</div>
+
+{% endblock %}
+

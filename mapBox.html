@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display a map on a webpage</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+  	     lat:{{result['lat']}}lng:{{result['lng']}}
+        <input type="text" id="latitude" value="{{result['lat']}}">
+        <input type="text" id="longitude" value="{{result['lng']}}">
+
+    <div id="map"></div>
+    <script>
+    	let x = document.getElementById("latitude").value;
+            let y = document.getElementById("longitude").value;
+            
+             let x1 = parseFloat(x);
+             let y1 = parseFloat(y);
+
+      // TO MAKE THE MAP APPEAR YOU MUST
+      // ADD YOUR ACCESS TOKEN FROM
+      // https://account.mapbox.com
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoibWFwYm94cmVudGFsIiwiYSI6ImNsN3U0MTYzMzA1OTczb3BoYXhqbGxpdWoifQ.kC3GUc9SenjHqiESMcSfIg";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: "mapbox://styles/examples/cjgiiz9ck002j2ss5zur1vjji", // style URL
+        center: [y1, x1], // starting position [lng, lat]
+        zoom: 12, // starting zoom
+        projection: "globe", // display the map as a 3D globe
+      });
+
+
+
+      map.on("style.load", () => {
+        map.setFog({}); // Set the default atmosphere style
+      });
+
+      map.on("click", (event) => {
+        const features = map.queryRenderedFeatures(event.point, {
+          layers: ["Supreme Court"]
+        });
+        if (!features.length) {
+          return;
+        }
+        const feature = features[0];
+
+        const popup = new mapboxgl.Popup({ offset: [0, -15] })
+          .setLngLat(feature.geometry.coordinates)
+          .setHTML(
+            '<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>'
+          )
+          .addTo(map);
+      });
+
+      const marker = new mapboxgl.Marker({
+        draggable: false,
+      })
+        .setLngLat([y1,x1])
+        .addTo(map);
+
+      function onDragEnd() {
+        const lngLat = marker.getLngLat();
+        coordinates.style.display = "block";
+        coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+      }
+
+      marker.on("dragend", onDragEnd);
+
+
+    </script>
+  </body>
+</html>

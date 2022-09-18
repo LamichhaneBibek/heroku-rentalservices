@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Chat - View Profile</title>
+<link rel="stylesheet" href="{{url_for('static',filename='/css/maxcdn.css')}}"> 
+<link rel="stylesheet" href="{{url_for('static',filename='/css/main.css')}}">
+{% endblock %}
+
+{% block body %}
+<a href="/chat" name="20"><h5>&#8592 Back Contacts</h5></a>
+view////
+
+<div class="upload-img">
+  <div class="row heading">
+      <div class="col-sm-8 col-xs-7 heading-name">
+          <div class="heading-name-meta">View User Profile</div>
+      </div>
+  </div>
+  <div class="profile-userpic">
+      <img src="{{url_for('static',filename='/img/')}}{{phone_number}}.jpg" id="img1" class="img-responsive" alt="profile picture">
+  </div><hr>
+  <div class="heading-name-meta">User Name</div>
+  <div class="text-center">{{user.email}}</div>
+</div>
+  
+{% endblock %}
+
+    

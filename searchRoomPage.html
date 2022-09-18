@@ -1,0 +1,248 @@
+	<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/css/style.css">
+	
+	<link rel="stylesheet" href="static/css/filter_bar.css">
+	
+	<title>Rental services</title>
+
+ 		<!-- icon link --> 
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<style>
+
+
+   		/* google font link */
+   		@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+  
+		/* table heading font */
+		@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+		/* table text font */
+		@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Teko&display=swap');
+
+
+
+		.heading-style{
+			margin: 20px 15px;
+			font-family: 'Koulen', cursive;
+			text-align: center;
+			/*text-decoration: underline  #7094db  4px;*/
+		}
+
+			.table-title{
+					font-size: 25px;
+					color: black;
+					text-align: center;
+					font-family: 'Teko', sans-serif;
+
+			}
+		
+		.table-design{
+			margin: 2px;
+			display: flex;
+		}
+		
+		table{
+			margin: 10px;
+			background-color:#e6eefc ;
+			border-radius: 5px;
+			border-top: 4px solid #7094db;
+			border-left:1px solid  #7094db ;
+			border-right:1px solid  #7094db ;
+			border-bottom:1px solid  #7094db ;
+		}
+
+		table:hover{
+			background-color: #adc6ed;
+			border-top: 4px solid #adc6ed;
+		}		
+
+		
+		.table-right-text{
+			text-align: right;
+		}
+		.table-center-text{
+			text-align: center;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+			font-size: 15px;
+		}
+		.img-table{
+			width: 150px;
+			height: 125px;
+		}
+		td{
+			padding: 5px 15px;
+			text-align: center;
+		}
+
+		.table-container{
+			display: flex;
+			flex-direction: row;
+			/*background-color:#686868;*/
+			flex-wrap: wrap;
+
+		}
+		.view-more{
+			text-decoration: none;
+			background-color: #7094db; 
+			color: black;
+			padding: 5px;
+			margin-left: 14px;
+			color: black;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+
+
+		}	
+		.view-more:hover{
+			background-color: #adc6ed; 
+
+		}
+	</style>
+
+	</head> 
+	
+	<body>
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="static/img/logo-search-grid-1x.png" alt="logo"></div>
+				{% if result['user']=='admin@gmail.com' %}
+				<li><a href="/adminDashboard">Home</a></li>
+				{% else %}
+				<li><a href="/">Home</a></li>
+				{% endif %} 
+
+				<li><a href="/room">Flat</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+				{% if result['user'] %}
+				<li><a href="/myProfilePage">Profile</a></li>			
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				{% endif %} 
+			</ul>
+			<div class="rightNav v-class-resp">
+				 <form action="/searchFlat" method="POST"  enctype="multipart/form-data">
+             
+              <input type="text" name="hall_name" placeholder="Search flat" class="btn btn-sm" style="background-color:whitesmoke; color: black;" required>   
+            <input type="submit" value="Search" class="btn btn-sm">
+        </form>
+
+
+				<!-- <form action="/search" methods='POST'>
+				<input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+				</form> -->
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+
+		</nav>
+		
+    <div class="container" style="margin: auto;">
+        
+<br>
+        
+        
+<br>
+
+<div class="filter-container">
+	<form action="/filterSearchFlat" method="POST"  enctype="multipart/form-data">
+		<input type="text" name="address" placeholder=" Enter Address" class="btn btn-sm input-box" required>
+		<input type="text" name="district" placeholder=" Enter district" class="btn btn-sm input-box" required>
+		<input type="number" name="no_room" placeholder=" No. of room" class="btn btn-sm input-box" required>
+		<input type="number" name="price_from" placeholder=" Price From" class="btn btn-sm input-box" required>
+		<input type="number" name="price_to" placeholder=" Price To" class="btn btn-sm input-box" required>
+         <input type="submit" value="Search" class="btn btn-sm">
+
+		
+		
+	</form>
+</div>
+	
+	<!-- Heading  -->
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Flat <i class='bx bxl-flickr'></i>
+	</h1>
+	
+	{% if result['flatList'] %}
+		<a href="/room" class="view-more">
+			View More <i class='bx bxs-right-arrow-square' ></i>
+		</a>
+
+		
+
+		<div class="table-design">
+			<div class="table-container">
+			
+				{% for room in result['flatList'] %}
+					<table>
+					<tr>
+						<td colspan="2" ><img src="{{room.13}}"  class="img-table"></td>
+					</tr>
+					<tr>
+						<td class="table-title" >
+							Flat- {{room.0}}
+
+						</td>
+						<td>Rs.{{ room.6 }}</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-title">
+					{{ room.1|truncate(25, True, '...', 0) }}
+							<!-- {{ room.1[0:25] }} -->
+							
+						</td>
+					</tr>
+					
+					<tr class="table-center-text">
+						<td><strong> Address: </strong> </td>
+						<td>{{ room.2 }}</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong></strong> </td>
+						<td>{{ room.3 }}</td>
+
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails/{{room.0}}"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>						
+					</tr>
+				</table>
+
+				{% endfor %}	
+			</div>
+		</div>
+	{% else %}
+		<!-- <div class="table-title">
+			No Flat to display !!
+		</div> -->
+		<h1 class="heading-style background" style="font-family: 'Koulen', cursive; text-align: center; height: 280px;color:white; padding-top:80px; margin: 2px 0;">
+										Nothing to display !!
+
+		</h1>		
+	{% endif %}	
+			
+	<hr>
+	
+	
+	
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	</body>
+	</html>
+
