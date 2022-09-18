@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #map {
+                height :400px;
+                width : 100%;
+            }
+        </style>
+    </head>
+    <body>
+        {lat:{{result['lat']}}, lng:{{result['lat']}}}
+        <input type="text" id="latitude" value="{{result['lat']}}">
+        <input type="text" id="longitude" value="{{result['lng']}}">
+
+        <h1> google maps</h1>
+        <div id="map">
+            
+        </div>
+    </body>
+
+
+    <script>
+        function initMap(result){
+            var x = document.getElementById("latitude").value;
+            var y = document.getElementById("longitude").value;
+            
+            var x1 = parseInt(x);
+            var y1 = parseInt(y);
+
+            var loc = {lat:x1,lng:y1}
+            var options = {
+                zoom: 17,
+                center: loc
+            }
+            var map = new 
+            google.maps.Map(document.getElementById('map'),options);
+
+            var marker = new google.maps.Marker({
+                position: loc,
+                map : map
+            });
+
+
+        }
+        window.initMap = initMap;
+
+    </script>
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAtPWfo9lSmCRG359W3go11NLcaQyznGw&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+<!-- google website bata liyeko -->
+<!--           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      defer
+ -->
+<!-- canteen meal ko  -->
+<!-- 
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAtPWfo9lSmCRG359W3go11NLcaQyznGw&callback=initMap&v=weekly"
+      defer
+    ></script> -->
+</html>

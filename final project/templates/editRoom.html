@@ -1,0 +1,205 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- icon link -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- home page style -->
+    <link rel="stylesheet" href="../static/css/style.css">
+  
+    <title>Rental services</title>
+    
+    <!-- form to add style -->
+    <link rel="stylesheet" href="../static/css/add_vehicle_style.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+     
+      .main-container{
+        width: 100%;
+        display: flex;
+        background-color: #686868;
+        flex-direction: column;
+       
+      }
+    
+
+      .card{
+        width:200px;  
+        height:40px;
+        background-color: #8cd9b3; 
+        padding:8px;
+        margin:10px;
+        border-radius:10px;
+        text-align:center;
+      }
+      .card-container{
+        width: 100%;
+          display:flex;
+          flex-direction:row;
+          background-color:#686868  ;
+          flex-wrap:wrap;
+          justify-content:flex-start;
+           margin: auto;
+      }
+
+
+
+
+    </style>
+  </head> 
+  
+  <body>
+    <div class="main-container">
+      <nav class="navbar background h-nav-resp">
+        <ul class="nav-list v-class-resp" >
+          <div class="logo"><img src="static/img/logo-search-grid-1x.png" alt="logo"></div>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/room">Flat</a></li>
+          <li><a href="/vehicle">Vehicle</a></li>
+          <li><a href="/hall">Hall</a></li>
+          {% if result['loged_in_user'] %}
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+          {% endif %} 
+        </ul>
+        <div class="rightNav v-class-resp">
+         <!--  <input type="text" name="search" id="search">
+          <button class="btn btn-sm">Search </button> -->
+        </div>
+        <div class="burger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+  <!-- card for add, find, edit ,show -->
+  <div class="card-container">
+    <a href="/room" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color: #f2f6fa;">
+              <i class='bx bx-show' ></i> Show Flat
+          </div>
+        </a>
+        
+        <a href="/addRoom" style=" text-decoration:none; color:black " >
+          <div class="card" style="background-color:#6699ff;">
+              <i class='bx bx-message-square-add' ></i> Add Flat
+          </div>
+        </a>
+
+
+        <a href="#" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color:#f2f6fa;">
+              <i class='bx bx-search-alt-2' ></i> Find Flat
+          </div>
+        </a>
+
+    
+        <a href="#" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color: #f2f6fa;">
+              <i class='bx bx-edit' ></i> My Flat
+          </div>
+        </a>
+    
+  </div>
+
+<!-- .................................... -->
+<!-- {% if result['room'] %}
+{{ result['room']}}
+{% endif %} -->
+<br>
+ <div class="container" style="margin: auto;">
+    <div class="title">Update Flat</div>
+    
+    <div class="content">
+       <p> 
+            {% with messages =get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+             {% endwith %}               
+          </p>
+      <form action="/updateRoom/{{result['room'].0}}" method="POST"  enctype="multipart/form-data">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Title</span>
+            <input type="text" placeholder="Enter Title/Heading" name="room_title" value="{{ result['room'].1 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" placeholder="Enter address" name="room_address" value="{{ result['room'].2 }}" required>
+          </div>
+           <div class="input-box">
+            <span class="details">District</span>
+            <input type="text" placeholder="Enter district" name="room_district" value="{{ result['room'].3 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Area</span>
+            <input type="text" placeholder="Enter Area" name="room_area" value="{{ result['room'].7 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Price</span>
+            <input type="text" placeholder="Enter Price" name="room_price" value="{{ result['room'].6 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Number of Room</span>
+            <input type="text" placeholder="Enter number of room" name="room_no" value="{{ result['room'].8 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Floor</span>
+            <input type="text" placeholder="Enter floor" name="room_floor" value="{{ result['room'].9 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Capacity of 2 wheeler</span>
+            <input type="text" placeholder="Enter capacity of two wheeler" name="room_2wheel" value="{{ result['room'].11 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Capacity of 4 wheeler</span>
+            <input type="text" placeholder="Enter capacity of 4 wheeler" name="room_4wheel" value="{{ result['room'].10 }}" required>
+          </div>
+
+
+        </div>
+                  <div class="input-box">
+            <span class="details">Description</span>
+             <textarea name="room_description"  value="{{ result['room'].12 }}" cols="98" rows="10" required style="padding:5px ;"></textarea>
+          </div>
+        <hr>                    
+        <br>
+        <!-- <div class="checklist-title">
+        Select Photos:<br>
+        </div>
+        <input type="file" name="files[]" multiple="true" class="form-control" autocomplete="off" required><br>
+        <br> 
+ -->
+        <hr>
+        <div class="button">
+          <input type="submit" value="Update Details">
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+<!-- .................................... -->
+
+
+      <footer class="background">
+        <p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+      </footer>
+    </div>
+    <script src="js/resp.js" ></script> 
+  </body>
+</html>
+

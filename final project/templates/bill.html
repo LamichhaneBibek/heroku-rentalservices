@@ -1,0 +1,147 @@
+<html>
+	<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="../static/css/style.css">
+			<link rel="stylesheet" href="../static/css/save_delete_edit_btn.css">
+
+			
+			<title>Rental services</title>
+			<!-- icon link -->
+			<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+			<style>
+				/*google font*/
+				@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+				/*icon link */
+				<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+				.heading-style{
+					margin: 20px 15px;
+				}
+				
+
+	   
+				.image-container{
+					display: flex;
+					flex-direction: row;
+					/*background-color:#686868;*/
+					flex-wrap: wrap;
+					margin:10px;
+					height: 75%;
+
+				}
+				table{
+					width: 300px;
+					margin: auto;
+
+				}	
+				td{
+					margin: 10px;
+					padding: 10px 0px ;
+					text-align: center;
+				}
+				
+				
+
+			</style>
+
+		</head> 
+	
+	<body>
+
+		<!-- navigation bar -->
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="../static/img/logo-search-grid-1x.png" alt="logo"></div>
+				<li><a href="/">Home</a></li>
+				<li><a href="/room">Room</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+
+				{% if result['loged_in_user'] %}
+				<li><a href="/myProfilePage">Profile</a></li>
+
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				{% endif %} 
+
+				<!-- <li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li> -->
+			</ul>
+			<div class="rightNav v-class-resp">
+			<!-- 	<input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+			 -->	
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+		</nav>	
+
+
+
+
+    	<!-- table content -->
+			<div class="detail-container">
+				
+				<div class="image-container">
+
+					
+					<table>
+						<tr>
+							<td>
+								<h4>Successfully booked and paid..!</h4> 
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<!-- {{result['details_to_show_in_billPage']}} <br> -->
+								<strong>{{result['details_to_show_in_billPage'].4}} - Id: {{result['details_to_show_in_billPage'].0}}</strong>
+
+							</td>
+
+						</tr>
+						<tr>
+							<td>
+								<strong>Price:</strong> {{result['details_to_show_in_billPage'].3}} <br>
+								 
+
+							</td>
+
+						</tr>
+						<tr>
+							<td>
+								<strong>Address :</strong>{{result['details_to_show_in_billPage'].1}}, {{result['details_to_show_in_billPage'].2}}
+
+							</td>
+
+						</tr>
+						<tr>
+							<td><strong>
+								{% if result['booked_date'] %}
+									Booked for {{result['booked_date']}}
+								{% endif %}
+								</strong>
+							</td>
+							
+						</tr>
+					</table>
+
+				</div>	
+
+
+	
+
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	</body>
+	</html>
+

@@ -1,0 +1,296 @@
+	<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/style.css">
+	
+	<link rel="stylesheet" href="../static/css/user_Profile_Info_Page.css">
+
+	<title>Rental services</title>
+
+ 		<!-- icon link --> 
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<style>
+
+
+   		/* google font link */
+   		@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+  
+		/* table heading font */
+		@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+		/* table text font */
+		@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Teko&display=swap');
+
+		html{
+			scroll-behavior: smooth;
+		}
+
+		.heading-style{
+			margin: 20px 15px;
+			font-family: 'Koulen', cursive;
+			text-align: center;
+			/*text-decoration: underline  #7094db  4px;*/
+		}
+
+			.table-title{
+					font-size: 25px;
+					color: black;
+					text-align: center;
+					font-family: 'Teko', sans-serif;
+
+			}
+		
+		.table-design{
+			margin: 2px;
+			display: flex;
+		}
+		
+		table{
+			margin: 10px;
+			background-color:#e6eefc ;
+			border-radius: 5px;
+			border-top: 4px solid #7094db;
+			border-left:1px solid  #7094db ;
+			border-right:1px solid  #7094db ;
+			border-bottom:1px solid  #7094db ;
+		}
+
+		table:hover{
+			background-color: #adc6ed;
+			border-top: 4px solid #adc6ed;
+		}		
+
+		
+		.table-right-text{
+			text-align: right;
+		}
+		.table-center-text{
+			text-align: center;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+			font-size: 15px;
+		}
+		.img-table{
+			width: 200px;
+			height: 175px;
+		}
+		td{
+			padding: 10px 15px;
+			text-align: center;
+		}
+
+		.table-container{
+			display: flex;
+			flex-direction: row;
+			/*background-color:#686868;*/
+			flex-wrap: wrap;
+
+		}
+		.view-more{
+			text-decoration: none;
+			background-color: #7094db; 
+			color: black;
+			padding: 5px;
+			margin-left: 14px;
+			color: black;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+
+
+		}	
+		.view-more:hover{
+			background-color: #adc6ed; 
+
+		}
+		/*button container part*/
+		.button-container{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin: 2px;
+			padding: 30px;
+			position: center;
+			background-size: cover;
+			text-align: center;
+			background-repeat: no-repeat;
+		}
+		.button-details{
+			padding: 10px;
+			margin: 0px 10px;
+			border: 2px solid whitesmoke;
+			border-radius: 10px;
+			text-decoration: none;
+			color: whitesmoke;
+
+		}
+		.text-heading-l{
+					font-size: 25px;
+					text-align: center;
+					margin: 5px;
+					font-family: 'Roboto Mono', monospace;
+				}
+
+				.img-circle{
+					height: 100px;
+				    width:100px;
+				    border: 3px solid black;
+				    border-radius:50px;
+				}
+				.number-circle{
+					height: 50px;
+				    width:50px;
+				    border: 10px solid black;
+				    border-radius:50px;
+				}
+
+
+	</style>
+
+	</head> 
+	
+	<body>
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="../static/img/logo-search-grid-1x.png" alt="logo"></div>
+				<li><a href="/">Home</a></li>
+				<li><a href="/room">Flat</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+				{% if result['loged_in_user'] %}
+				
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				{% endif %} 
+			</ul>
+			<div class="rightNav v-class-resp">
+				<!-- <input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+				 -->
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+
+		</nav>
+	<!-- button container part -->
+	<!-- <div class="button-container">
+		<a href="/profile" class="button-details">Change Profile</a>
+		<a href="/myRoom" class="button-details">My Flat </a>
+		<a href="/myVehicle" class="button-details">My Vehicle </a>
+		<a href="/myHall" class="button-details">My Hall </a>		
+		<a href="#WhishlistLink" class="button-details">My Whishlist </a>		
+	</div>	
+	 -->
+	 <div class="heading-style text-heading-l"  >	
+			Profile
+		</div>
+	 {% if result['userInfo'] %}
+	 <div class="button-container" style="justify-content: center;">
+		<table>
+			<tr>
+				<td >
+					{% if result['userInfo'].0.8 %}
+					<img src="../{{result['userInfo'].0.8}}" class="img-circle" alt="image" class="img-table">
+					{% else  %}
+					<img src="../static/img/img_avatar2.png" class="img-circle" alt="image" class="img-table">
+					{% endif %}
+
+				</td>
+			</tr>
+			<tr>
+				<td>Created on date :</td>
+			</tr>
+			<tr>	
+				<td>{{result['userInfo'].9}}</td>
+			</tr>
+			<tr>
+				<td>Created on time :</td>
+			</tr>	
+			<tr>
+				<td>{{result['userInfo'].10}}</td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td>User id :</td>
+				<td>{{result['userInfo'].0}}</td>
+			</tr>
+			<tr>
+				<td>Full name :</td>
+				<td>{{result['userInfo'].1}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>{{result['userInfo'].2}}</td>
+			</tr>
+			<tr>
+				<td>Email :</td>
+				<td>{{result['userInfo'].3}}</td>
+			</tr>
+			<tr>
+				<td>Contact no. :</td>
+				<td>{{result['userInfo'].6}}</td>
+			</tr>
+			<tr>
+				<td>Address :</td>
+				<td>{{result['userInfo'].4}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>{{result['userInfo'].5}}</td>
+			</tr>
+			
+		</table>
+	</div>
+	{% endif %}
+
+<div class="number-container">
+	<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" >{{result['count_room']}}</p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Flat</b></h4> 
+	    <p>Total no. post</p> 
+	  </div>
+	</div>
+
+
+
+	<div class="card">
+		<div class="circle">
+	  <p style="margin-top: 16px;margin-left: 18px;" >{{result['count_vehicle']}}</p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Vehicle</b></h4> 
+	    <p>Total no. post</p> 
+	  </div>
+	</div>
+
+<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" >{{result['count_hall']}}</p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Hall</b></h4> 
+	    <p>Total no. post</p> 
+	  </div>
+	</div>
+
+
+</div>
+
+
+	
+
+	
+
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	</body>
+	</html>
+

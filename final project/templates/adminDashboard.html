@@ -1,0 +1,500 @@
+	<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/css/style.css">
+	
+	<title>Rental services</title>
+
+ 		<!-- icon link --> 
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+		<link rel="stylesheet" href="../static/css/user_Profile_Info_Page.css">
+
+	<style>
+
+		html{
+			scroll-behavior: smooth;
+		}
+
+   		/* google font link */
+   		@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+  
+		/* table heading font */
+		@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+		/* table text font */
+		@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Teko&display=swap');
+
+
+
+		.heading-style{
+			margin: 20px 15px;
+			font-family: 'Koulen', cursive;
+			text-align: center;
+			/*text-decoration: underline  #7094db  4px;*/
+		}
+
+			.table-title{
+					font-size: 15px;
+					color: black;
+					text-align: center;
+					font-family: 'Teko', sans-serif;
+
+			}
+		
+		.table-design{
+			margin: 2px;
+			display: flex;
+		}
+		
+		table{
+			margin: 10px;
+			background-color:#e6eefc ;
+			border-radius: 5px;
+			border-top: 4px solid #7094db;
+			border-left:1px solid  #7094db ;
+			border-right:1px solid  #7094db ;
+			border-bottom:1px solid  #7094db ;
+		}
+
+		table:hover{
+			background-color: #adc6ed;
+			border-top: 4px solid #adc6ed;
+		}		
+
+		
+		.table-right-text{
+			text-align: right;
+		}
+		.table-center-text{
+			text-align: center;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+			font-size: 15px;
+		}
+		.img-table{
+			width: 150px;
+			height: 125px;
+		}
+		td{
+			padding: 5px 15px;
+			text-align: center;
+		}
+
+		.table-container{
+			display: flex;
+			flex-direction: row;
+			/*background-color:#686868;*/
+			flex-wrap: wrap;
+
+		}
+		.view-more{
+			text-decoration: none;
+			background-color: #7094db; 
+			color: black;
+			padding: 5px;
+			margin-left: 14px;
+			color: black;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+
+
+		}	
+		.view-more:hover{
+			background-color: #adc6ed; 
+
+		}
+		.internal-link-btn-container{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: left;
+			margin: 5px;
+				}
+		.internal-link-btn{
+			text-decoration:none;
+			background-color: #transparent; 
+			color:whitesmoke; 
+			padding:5px 30px;border:2px solid whitesmoke;
+			border-radius: 5px;"
+		
+		}
+
+	</style>
+
+	</head> 
+	
+	<body>
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="static/img/logo-search-grid-1x.png" alt="logo"></div>
+				<li><a href="/adminDashboard">Home</a></li>
+				<li><a href="/room">Flat</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+				<li><a href="/user">User</a></li>
+
+				{% if result['user'] %}
+				
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				{% endif %} 
+			</ul>
+			<div class="rightNav v-class-resp">
+				<!-- <input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+				 -->
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+
+		</nav>
+	<section class="background firstSection">
+		<div class="box-main">
+			<div class="firstHalf">
+				<p class="text-big">Rental Services</p>
+				<p class="text-small">
+					Rent, Search, and Book Property.
+				</p>
+				<br>
+				<!-- {% if result['user'] %} -->
+				<p class="text-small">
+				
+					<strong>User Profile: Admin</strong>
+				
+					<!-- list of user detials -->
+					<!-- {{result['user']}} -->
+					<!-- {{result['user'].2}} -->
+					<br>
+				</p>
+				<br>
+				<p class="text-small">
+					<strong>
+					Email: admin@gmail.com</strong>
+					
+						<!-- {{result['user'].0}} -->
+				</p>
+				<!-- {% endif %} -->
+
+				<div class="internal-link-btn-container">
+					<p style="margin:5px;">
+					<a href='#booked' class='internal-link-btn'>Booked Hall and Vehicle Number</a>
+					</p>
+					<br>
+					<br>
+					<p style="margin:5px;">
+					<a href='#total' class='internal-link-btn' >Total User, Flat, Vehicle, Hall </a>
+					</p>					
+				</div>
+
+
+				<div class="buttons">
+					<!-- {% if result['user'] %} -->
+					
+					<form action="/profile">		
+					<button class="btn">My Profile</button>
+					</form>
+					<!-- <button class="btn">My Items</button> -->
+					<!-- {% endif %}  -->
+				</div>
+				
+			</div>
+			<div class="secondHalf">
+<!-- 				<form> -->
+					<img src="static/img/th.jfif" alt="image">
+					<br>
+					<!-- <input type="file" name="files[]" multiple="true" class="form-control" autocomplete="off" required>
+					<button type="submit" class="view-more" >Change Web Logo</button> -->
+<!-- 				</form>-->	
+		</div>
+		</div>
+	</section>
+
+
+	<!-- Heading  -->
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Flat <i class='bx bxl-flickr'></i>
+	</h1>
+	
+	{% if result['sixFlat'] %}
+		<a href="/room" class="view-more">
+			View More <i class='bx bxs-right-arrow-square' ></i>
+		</a>
+
+		<div class="table-design">
+			<div class="table-container">
+			
+				{% for room in result['sixFlat'] %}
+					<table>
+						<tr>
+							<td colspan="2" ><img src="{{room.13}}"  class="img-table"></td>
+						</tr>
+						<tr>
+							<td class="table-title" >
+								Flat- {{room.0}}
+
+							</td>
+							<td>Rs.{{ room.6 }}</td>
+						</tr>
+						<tr >
+							<td colspan="2" class="table-title">
+								{{ room.1|truncate(25, True, '...', 0) }}
+								<!-- {{ room.1[0:25] }} -->
+								
+							</td>
+						</tr>
+						
+						<tr class="table-center-text">
+							<td>Address: </td>
+							<td>{{ room.2 }}</td>
+
+						</tr>
+						<tr class="table-center-text">
+							<td><strong></strong> </td>
+							<td>{{ room.3 }}</td>
+
+						</tr>
+						<tr>
+							<td colspan="2" class="table-center-text">
+								<a href="/roomDetails/{{room.0}}"
+								style=" text-decoration: none;
+								background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+									<strong>
+										View Details
+									</strong>
+								</a>
+							</td>						
+						</tr>
+					</table>
+				{% endfor %}	
+			</div>
+		</div>
+	{% else %}
+		<div class="table-title">
+			No Flat to display !!
+		</div>		
+	{% endif %}	
+			
+	<hr>
+	
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Vehicle <i class='bx bxl-flickr'></i>
+	</h1>
+	{% if result['sixVehicle'] %}
+		<a href="/vehicle" class="view-more">
+			View More <i class='bx bxs-right-arrow-square' ></i>
+		</a>
+
+		<div class="table-container">
+			<div class="table-design">
+				{% for vehicle in result['sixVehicle'] %}
+				<table>
+					<tr>
+						<td colspan="2"><img src="../{{vehicle.16}}" alt="image"  class="img-table"></td>
+					</tr>
+					<tr >
+						<td  class="table-title">
+							Vehicle-{{vehicle.0}}
+						</td>
+						<td>Rs.{{vehicle.10}}</td>
+					</tr>
+					<tr class="table-center-text">
+						<td>Address:</td>
+						<td>{{vehicle.2}}</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong></strong> </td>
+						<td>{{ vehicle.3 }}</td>
+
+					</tr>
+					
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/vehicleDetails/{{vehicle.0}}"
+							style=" text-decoration: none;
+							background-color: #7094db
+							; color:black; padding:5px 30px; border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+						
+					</tr>
+				</table>
+				{% endfor %}
+			</div>
+		</div>
+	{% else %}
+		<div class="table-title">
+			No Vehicle to display !!
+		</div>
+	{% endif %}	
+	
+	<hr>
+
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Hall <i class='bx bxl-flickr'></i>
+	</h1>
+	{% if result['sixHall'] %}
+		<a href="/hall" class="view-more">
+			View More <i class='bx bxs-right-arrow-square' ></i>
+		</a>
+	
+			<div class="table-design">
+				<div class="table-container">
+
+				{% for hall in result['sixHall'] %}
+					<table>
+				<tr>
+					<td colspan="2">
+						<img src="{{hall.15}}" alt="image"  class="img-table">
+					</td>
+				</tr>
+				<tr>
+					<td class="table-title">
+						Hall-{{hall.0}}
+					</td>
+					<td>Rs.{{hall.4}}/-</td>
+				</tr>
+				<tr >
+						<td colspan="2" class="table-title">
+					{{ hall.1|truncate(25, True, '...', 0) }}
+							
+						</td>
+					</tr>
+
+				
+				<tr class="table-center-text">
+					<td>Address:</td>
+					<td>{{hall.2}}</td>
+				</tr>
+				<tr class="table-center-text">
+						<td><strong></strong> </td>
+						<td>{{ hall.3 }}</td>
+
+					</tr>
+
+				<tr>
+					<td colspan="2" class="table-center-text">
+						<a href="/hallDetails/{{hall.0}}" style=" text-decoration:none; background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+							<strong>
+								View Details
+							</strong>
+						</a>
+					</td>		
+				</tr>
+			</table>
+				{% endfor %}
+			</div>
+		</div>
+
+	{% else %}
+		<div class="table-title">
+			No Hall to display !!
+		</div>
+	{% endif %}	
+	<hr>
+
+<h3 style="text-align:center;" id="total">Number of User, Flat, Vehicle and Hall.</h3>
+<!-- card	for total user, flat , vehicle and hall -->
+<div class="number-container">
+	<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" ><strong>{{result['count_user'].0}}</strong></p>
+	  </div>
+	  <div class="container">
+	    <h4><b>User</b></h4> 
+	    <p>Total no. of users.</p> 
+	  </div>
+	</div>
+
+	<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" ><strong>{{result['count_flat'].0}}</strong></p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Flat</b></h4> 
+	    <p>Total no. post</p> 
+	  </div>
+	</div>
+
+
+
+	<div class="card">
+		<div class="circle">
+	  <p style="margin-top: 16px;margin-left: 18px;" ><strong>{{result['count_vehicle'].0}}</strong></p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Vehicle</b></h4> 
+	    <p>Total no. post</p> 
+	  </div>
+	</div>
+
+<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" ><strong>{{result['count_hall'].0}}</strong></p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Hall</b></h4> 
+	    <p>Total no. post</p> 
+	  </div>
+	</div>
+
+</div>
+
+<hr>
+<h3 style="text-align:center;" id="booked">Booked Hall and Vehicle Numbers.</h3>
+<!-- card	for total booked_vehicle and booked_hall -->
+<div class="number-container">
+	
+	<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" ><strong>{{result['count_booked_hall'].0}}</strong></p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Hall</b></h4> 
+	    <p>Total no. of Hall Booked.</p> 
+	  </div>
+	</div>
+
+	<div class="card">
+		<div class="circle">
+	 		 <p style="margin-top: 16px;margin-left: 18px;" ><strong>{{result['count_booked_vehicle'].0}}</strong></p>
+	  </div>
+	  <div class="container">
+	    <h4><b>Vehicle</b></h4> 
+	    <p>Total no. Vehicle Booked.</p> 
+	  </div>
+	</div>
+
+
+
+</div>
+
+
+
+
+<!-- 
+	<section class="contact">
+		<h2 class="text-center">
+			Contact Us
+		</h2>
+		<div class="form"> 
+			<input class="form-input" type="text" name="name" id="name" placeholder="Enter your name">
+			<input class="form-input" type="text" name="phone" id="name" placeholder="Enter your Phone">
+			<input class="form-input" type="email" name="email" id="name" placeholder="Enter your email">
+			<textarea class="form-input" name="text" id="text" cols="30" rows="10" placeholder="Enter your message...."></textarea> 
+			<button class="btn btn-sm btn-dark">Submit</button>
+		</div>
+	</section> -->
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	</body>
+	</html>
+

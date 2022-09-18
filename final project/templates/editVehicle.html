@@ -1,0 +1,256 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- icon link -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- home page style -->
+    <link rel="stylesheet" href="../static/css/style.css">
+  
+    <title>Rental services</title>
+    
+    <!-- form to add style -->
+    <link rel="stylesheet" href="../static/css/add_vehicle_style.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+     
+      .main-container{
+        width: 100%;
+        display: flex;
+        background-color: #686868;
+        flex-direction: column;
+       
+      }
+    
+
+      .card{
+        width:200px;  
+        height:40px;
+        background-color: #8cd9b3; 
+        padding:8px;
+        margin:10px;
+        border-radius:10px;
+        text-align:center;
+      }
+      .card-container{
+        width: 100%;
+          display:flex;
+          flex-direction:row;
+          background-color:#686868  ;
+          flex-wrap:wrap;
+          justify-content:flex-start;
+           margin: auto;
+      }
+
+
+
+
+    </style>
+  </head> 
+  
+  <body>
+    <div class="main-container">
+      <nav class="navbar background h-nav-resp">
+        <ul class="nav-list v-class-resp" >
+          <div class="logo"><img src="static/img/logo-search-grid-1x.png" alt="logo"></div>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/room">Flat</a></li>
+          <li><a href="/vehicle">Vehicle</a></li>
+          <li><a href="/hall">Hall</a></li>
+          {% if result['loged_in_user'] %}
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+          {% endif %} 
+        </ul>
+        
+        <div class="rightNav v-class-resp">
+         <!--  <input type="text" name="search" id="search">
+          <button class="btn btn-sm">Search </button> -->
+        </div>
+        <div class="burger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+  <!-- card for add, find, edit ,show -->
+     <div class="card-container">
+        <a href="/vehicle" style=" text-decoration:none; color:black; ">
+          <div class="card" style="background-color: #f2f6fa;">
+               <i class='bx bx-show' ></i> Show Vehicle
+          </div>
+        </a>
+        
+        <a href="/addVehicle" style=" text-decoration:none; color:black;" >
+          <div class="card" style="background-color:#6699ff;">
+              <i class='bx bx-message-square-add' ></i> Add Vehicle
+          </div>
+        </a>
+
+
+        <a href="#" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color:#f2f6fa;">
+              <i class='bx bx-search-alt-2' ></i> Find Vehicle
+          </div>
+        </a>
+
+    
+        <a href="#" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color: #f2f6fa;">
+              <i class='bx bx-edit' ></i> My Hall
+          </div>
+        </a>
+    
+      </div>
+
+<!-- .................................... -->
+<!-- {% if result['vehicle'] %}
+  {{ result['vehicle']}}
+{% endif %}
+ -->
+
+<br>
+ <div class="container" style="margin: auto;">
+    <div class="title">Update Vechile</div>
+    
+    <div class="content">
+       <p> 
+            {% with messages =get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+             {% endwith %}               
+          </p>
+     
+      <form action="/updateVehicle/{{result['vehicle'].0}}" method="POST"  enctype="multipart/form-data">
+        <div class="user-details">
+            <label for="cars">Choose vehicle category:</label>
+        <br>
+        <select name="vehicle_category" id="vehicle_category">
+          <option value="Car">Car</option>
+          <option value="Van">Van</option>
+          <option value="Jeep">Jeep</option>
+          <option value="Bike">Bike</option>
+          <option value="Scotter">Scotter</option>
+          <option value="Bus">Bus</option>
+        </select>
+          <div class="input-box">
+            <span class="details">Vehicle Number Plate</span>
+            <input type="text" placeholder="Enter vechile number plate detail" name="vehicle_no" value="{{ result['vehicle'].1 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Location</span>
+            <input type="text" placeholder="Enter location" name="vehicle_location" value="{{ result['vehicle'].2 }}" required>
+          </div>
+
+          <div class="input-box">
+            <span class="details">District</span>
+            <input type="text" placeholder="Enter District" name="vehicle_district" value="{{ result['vehicle'].3 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Vehicle company</span>
+            <input type="text" placeholder="Enter name of vehicle company" name="vehicle_company" value="{{ result['vehicle'].4 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Vehicle model</span>
+            <input type="text" placeholder="Enter model of vehicle" name="vehicle_model" value="{{ result['vehicle'].5 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Vehicle Milage</span>
+            <input type="text" placeholder="enter vehicle type" name="vehicle_milage" value="{{ result['vehicle'].8 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Vehicle color</span>
+            <input type="text" placeholder="Enter vehicle color" name="vehicle_color" value="{{ result['vehicle'].6 }}" required>
+          </div>
+            <div class="input-box">
+            <span class="details">Vehicle Engine Capacity</span>
+            <input type="text" placeholder="Enter Engine Capacity" name="vehicle_engineCapacity" value="{{ result['vehicle'].7 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Person Capacity</span>
+            <input type="text" placeholder="Enter Person Capacity" name="vehicle_personCapacity" value="{{ result['vehicle'].9 }}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Price</span>
+            <input type="text" placeholder="Enter Price" name="vehicle_price" value="{{ result['vehicle'].10 }}" required>
+          </div>
+
+        </div>
+        <div class="input-box">
+            <span class="details">Vehicle Description</span>
+           <textarea name="vehicle_description"  value="{{ result['vehicle'].13 }}" cols="98" rows="10" required style="padding:5px ;" placeholder="Enter description"></textarea>
+              
+          <!--   <input type="text" placeholder="Enter description" name="vehicle_description" value="{{ result['vehicle'].13 }}" required>
+           -->
+          </div>
+        <div class="gender-details">
+          <input type="radio" name="fuel" id="dot-1" value="Disel">
+          <input type="radio" name="fuel" id="dot-2" value="Petrol">
+          <input type="radio" name="fuel" id="dot-3" value="Electric">
+          <span class="gender-title">Fuel Type</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Disel</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Petrol</span>
+          </label>
+          <!-- <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Electric</span>
+            </label> -->
+          </div>
+        </div>
+         
+        
+        <br>
+        <br>
+
+  
+
+    <hr>                    
+    <br>
+   
+    <br> 
+
+<hr>
+
+
+
+        <div class="button">
+          <input type="submit" value="Update Details">
+        </div>
+      </form>
+
+
+
+    </div>
+  </div>
+
+
+
+
+<!-- .................................... -->
+
+
+      <footer class="background">
+        <p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+      </footer>
+    </div>
+    <script src="js/resp.js" ></script> 
+  </body>
+</html>
+

@@ -1,0 +1,286 @@
+<html>
+	<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="static/css/style.css">
+			
+
+			<!-- icon link -->
+		    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+
+			
+			<title>Rental services</title>
+
+			<style>
+				/* table heading font */
+				@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+				/* table text font */
+				@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Teko&display=swap');
+
+			
+				.heading-style{
+					margin: 20px 15px;
+				}
+				
+				.table-title{
+					font-size: 25px;
+					color: black;
+					text-align: center;
+					font-family: 'Teko', sans-serif;
+
+				}
+				.table-design{
+					margin: 2px;
+					display: flex;
+				
+				}
+				table{
+					margin: 10px;
+						/*min width - trial*/
+					min-width: 210px;
+					background-color:#e6eefc ;
+					border-radius: 5px;
+					border-top: 4px solid #7094db;
+					border-left:1px solid  #7094db ;
+					border-right:1px solid  #7094db ;
+					border-bottom:1px solid  #7094db ;
+				}
+				table:hover{
+					background-color: #adc6ed;
+					border-top: 4px solid #adc6ed;
+				}
+
+				.table-right-text{
+					text-align: right;
+				}
+				.table-center-text{
+					text-align: center;
+					font-family: 'M PLUS Rounded 1c', sans-serif;
+					font-size: 15px;
+				}
+				.img-table{
+					/*150*/
+					width: 180px;
+					height: 125px;
+				}
+				td{
+					padding: 5px 15px;
+					text-align: center;
+
+				}
+
+	   			/* google font link */
+	   			@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+
+
+				.card{
+	 				width:200px;  
+	    			height:20px;
+				    background-color: #8cd9b3; 
+				    padding:8px;
+				    margin:10px;
+				    border-radius:10px;
+				    text-align:center;
+				}
+
+				.card-container{
+					width: 100%;
+				  	display:flex;
+				  	flex-direction:row;
+				  	background-color:#686868  ;
+				  	flex-wrap:wrap;
+				  	justify-content:center;
+				     margin-top: auto;
+				}
+				.table-container{
+					display: flex;
+					flex-direction: row;
+					/*background-color:#686868;*/
+					flex-wrap: wrap;
+
+				}	
+			</style>
+
+		</head> 
+	
+	<body>
+
+		<!-- navigation bar -->
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="static/img/logo-search-grid-1x.png" alt="logo"></div>
+				<li><a href="/">Home</a></li>
+				<li><a href="/room">Flat</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+				{% if result['loged_in_user'] %}
+				<li><a href="/myProfilePage">Profile</a></li>
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				{% endif %} 
+			</ul>
+			<div class="rightNav v-class-resp">
+			<form action="/searchFlat" method="POST"  enctype="multipart/form-data">
+             
+              <input type="text" name="hall_name" placeholder="Search flat" class="btn btn-sm" style="background-color:whitesmoke; color: black;" required>   
+            <input type="submit" value="Search" class="btn btn-sm">
+        </form>
+				
+
+				<!-- <input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+				 -->
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+		</nav>		
+
+		<!-- Heading  -->
+		<h1 class="heading-style" style="font-family: 'Koulen', cursive; text-align: center; ">
+			Flat
+		</h1>
+
+		<!--card view  -->
+		<div class="card-container">
+	    	<a href="/room" style=" text-decoration:none; color:black;">
+    			<div class="card" style="background-color: #f2f6fa;">
+      				<i class='bx bx-show' ></i> Show Flat 
+    			</div>
+    		</a>
+
+    		{% if result['loged_in_user'] %}
+
+	    	<a href="/addRoom" style=" text-decoration:none; color:black;" >
+    			<div class="card" style="background-color:#f2f6fa;">
+      				<i class='bx bx-message-square-add' ></i> Add Flat
+    			</div>
+    		</a>
+	
+
+    		<a href="/myRoom" style=" text-decoration:none; color:black;">
+    			<div class="card" style="background-color: #6699ff;">
+      				<i class='bx bx-edit' ></i> My Flat
+    			</div>
+    		</a>
+
+			{% endif %} 
+
+
+    		<a href="/searchRoomPage" style=" text-decoration:none; color:black;">
+    			<div class="card" style="background-color:#f2f6fa;">
+      				<i class='bx bx-search-alt-2' ></i> Find Flat
+    			</div>
+    		</a>
+
+    
+    
+    
+    		
+    	</div>
+
+ <!-- flashed message for delete succesfully -->
+    	<div style="background-color:#88cc00; margin: 5px; font-size: 20px; text-align: center;border: 1px solid black; border-radius: 5px;">
+			{% with messages =get_flashed_messages() %}
+                {% if messages %}
+                    <ul style="padding:5px;">
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+             {% endwith %} 
+        </div>
+
+             <!-- 0        1                  2      3              4 -->
+    <!-- , (20, 'Room for single', 'Balaju', 'Kathmandu', datetime.date(2022, 9, 1), 
+                5                            6    7   8   9   10  11     12        13    
+    	datetime.timedelta(seconds=51321), 6000, 5.0, 1, '2', 2, 32, 'no ....', 'static/img/
+                              14                           15 
+    	flat/user6.png', 'static/img/flat/user5.png', 'static/img/flat/user2.png', 6)) -->
+    	<!-- table content -->
+    	{% if result['room'] %}
+
+		<div class="table-design">
+			<div class="table-container">
+				{% for room in result['room'] %}
+				<table>
+					<tr>
+						<td colspan="2" ><img src="{{room.13}}"  class="img-table"></td>
+					</tr>
+					<tr>
+						<td class="table-title" >
+							Flat- {{room.0}}
+
+						</td>
+						<td>Rs.{{ room.6 }}</td>
+					</tr>
+<tr >
+						<td colspan="2" class="table-title">
+					{{ room.1|truncate(25, True, '...', 0) }}
+							<!-- {{ room.1[0:25] }} -->
+							
+						</td>
+					</tr>
+					
+					<tr class="table-center-text">
+						<td><strong> Address: </strong> </td>
+						<td>{{ room.2 }}</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong></strong> </td>
+						<td>{{ room.3 }}</td>
+
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/myRoomDetails/{{room.0}}"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>						
+					</tr>
+				</table>
+				{% endfor %}
+			</div>
+		</div>
+{% else %}
+<h1 class="heading-style background" style="font-family: 'Koulen', cursive; text-align: center; height: 280px;color:white; padding-top:80px; margin: 2px 0;">
+										Nothing to display !!
+
+		</h1>
+
+		{% endif %}
+	
+	
+
+	
+
+	<!-- contact us form -->
+	<!-- <section class="contact">
+		<h2 class="text-center">
+			Contact Us
+		</h2>
+		<div class="form"> 
+			<input class="form-input" type="text" name="name" id="name" placeholder="Enter your name">
+			<input class="form-input" type="text" name="phone" id="name" placeholder="Enter your Phone">
+			<input class="form-input" type="email" name="email" id="name" placeholder="Enter your email">
+			<textarea class="form-input" name="text" id="text" cols="30" rows="10" placeholder="Enter your message...."></textarea> 
+			<button class="btn btn-sm btn-dark">Submit</button>
+		</div>
+	</section>-->
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	</body>
+	</html>
+

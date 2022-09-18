@@ -1,0 +1,88 @@
+<html>
+<head>
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+    <style type="text/css">
+        .body{
+            background-color:#adc6ed;
+        }
+        .book-design-container{
+            margin-top: 10px;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+           align-content: center;
+           padding: 10px;
+}       
+    </style>
+</head>
+<body style="background-color: #adc6ed;";
+>
+    <div class="book-design-container">
+        <h3>{{result['booking_total'].6}}</h3>
+        <h3 >Booked date: {{session['startdate']}}</h3>
+        <h3 >{{result['booking_total'].4}} - Id :{{result['booking_total'].0}}</h3>
+        <h3 >Address: {{result['booking_total'].1}}, {{result['booking_total'].2}}</h3>
+        
+        <h3 > Your Booking Amount is Rs. {{result['booking_total'].3}}</h3>
+        
+        <button id="payment-button" style="align:center; padding: 10px; background-color:#adc6ed;">Pay with Khalti</button><br>
+        <a href="/" style="text-align:center">Go to Homepage</a>
+    </div>
+    <!-- Place this where you need payment button -->
+    <!-- Paste this code anywhere in you body tag -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_c7f26632635f45e49e7cf813ecbed492",
+            "productIdentity": "{{result['booking_total'].0}}",
+            "productName": "{{result['booking_total'].4}}",
+            "productUrl": "http://localhost:5000",
+            "paymentPreference": [
+                "KHALTI",
+                "EBANKING",
+                "MOBILE_BANKING",
+                "CONNECT_IPS",
+                "SCT",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    axios.get("/khaltiVerify", {
+                        params: {
+                            "token": payload.token,
+                            "amount": payload.amount,
+                            "product_identity":payload.product_identity
+                        }
+                    }).then(function(resp){
+                        if (resp.data.success == true){
+                            alert("Thanks. Booking Completed Successfully")
+                            location.href = "/bill/{{result['booking_total'].6.0}}{{result['booking_total'].0}}"
+                        }else{
+                            alert("Sorry. Error occurred")
+                            location.href = "{{request.build_absolute_uri}}"
+                        }
+
+                    })
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount: {{result['booking_total'].3}}});
+        }
+    </script>
+    <!-- Paste this code anywhere in you body tag -->
+</body>
+</html>
