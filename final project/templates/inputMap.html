@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>Create a draggable Marker</title>
+      <meta
+         name="viewport"
+         content="initial-scale=1,maximum-scale=1,user-scalable=no"
+         />
+      <link
+         href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+         rel="stylesheet"
+         />
+
+
+      <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+      <style>
+
+         body {
+         margin: 0;
+         padding: 0;
+         }
+         #map {
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         margin-top: 60px;
+         width: 100%;
+         }
+      </style>
+   </head>
+   <body>
+      <style>
+         .coordinates {
+         background: rgba(0, 0, 0, 0.5);
+         color: #fff;
+         position: absolute;
+         bottom: 40px;
+         left: 10px;
+         padding: 5px 10px;
+         margin: 0;
+         font-size: 11px;
+         line-height: 18px;
+         border-radius: 3px;
+         display: none;
+         }
+      </style>
+      <h4 style="margin:2px; text-align: center;"> Id-{{id}} and  Type- {{itemType}}</h4> 
+      <form action="/saveInputMap/{{id}}/{{itemType}}" method="POST" enctype="multipart/form-data">
+            
+         <input type="text" name="long" id="long" value="" style="padding: 2px; margin-left: 5px;" required>
+         <input type="text" name="lat" id="lat" value="" style="padding: 2px;" required>
+         <button type="submit"  style="padding: 4px; background-color:#adc6ed">Save Location</button>
+      </form>         
+      <br>
+      <br>
+      <br>
+
+      <div id="map"></div>
+      <pre id="coordinates" class="coordinates"></pre>
+      <script>
+         mapboxgl.accessToken =
+           "pk.eyJ1IjoibWFwYm94cmVudGFsIiwiYSI6ImNsN3U0MTYzMzA1OTczb3BoYXhqbGxpdWoifQ.kC3GUc9SenjHqiESMcSfIg";
+         
+         
+         
+         const coordinates = document.getElementById("coordinates");
+         const map = new mapboxgl.Map({
+           container: "map",
+           // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+           style: "mapbox://styles/mapbox/streets-v11",
+           center: [85.31631298523331, 27.705983058564954],
+           zoom: 14,
+         });
+         
+         const marker = new mapboxgl.Marker({
+           draggable: true,
+         })
+           .setLngLat([85.31631298523331, 27.705983058564954])
+           .addTo(map);
+         
+         function onDragEnd() {
+           const lngLat = marker.getLngLat();
+           coordinates.style.display = "block";
+           coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+           document.getElementById('long').value = lngLat.lng;
+           document.getElementById('lat').value = lngLat.lat;
+         }
+         
+         marker.on("dragend", onDragEnd);
+         
+      </script>
+   </body>
+</html>

@@ -1,0 +1,28 @@
+.save_btn_container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content:center;
+	margin:10px;
+	}
+.save{
+	text-align: center;
+    background-color: lightgray;
+	padding: 5px;
+	margin: 5px;
+
+	width: 70px;
+	border: 2px solid gray;
+	border-radius: 10px;
+	text-align: center;
+	cursor: pointer;
+
+				    
+	}
+.save a{
+	text-decoration: none;
+	color: black;
+	}
+
+
+

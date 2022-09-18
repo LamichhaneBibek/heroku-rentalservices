@@ -1,0 +1,499 @@
+	<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/css/style.css">
+	
+	<title>Rental services</title>
+
+ 		<!-- icon link --> 
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<style>
+
+
+   		/* google font link */
+   		@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+  
+		/* table heading font */
+		@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+		/* table text font */
+		@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Teko&display=swap');
+
+
+
+		.heading-style{
+			margin: 20px 15px;
+			font-family: 'Koulen', cursive;
+			text-align: center;
+			/*text-decoration: underline  #7094db  4px;*/
+		}
+
+			.table-title{
+					font-size: 25px;
+					color: black;
+					text-align: center;
+					font-family: 'Teko', sans-serif;
+
+			}
+		
+		.table-design{
+			margin: 2px;
+			display: flex;
+		}
+		
+		table{
+			margin: 10px;
+			background-color:#e6eefc ;
+			border-radius: 5px;
+			border-top: 4px solid #7094db;
+			border-left:1px solid  #7094db ;
+			border-right:1px solid  #7094db ;
+			border-bottom:1px solid  #7094db ;
+		}
+
+		table:hover{
+			background-color: #adc6ed;
+			border-top: 4px solid #adc6ed;
+		}		
+
+		
+		.table-right-text{
+			text-align: right;
+		}
+		.table-center-text{
+			text-align: center;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+			font-size: 15px;
+		}
+		.img-table{
+			width: 150px;
+		}
+		td{
+			padding: 5px 15px;
+		}
+
+		.table-container{
+			display: flex;
+			flex-direction: row;
+			/*background-color:#686868;*/
+			flex-wrap: wrap;
+
+		}
+		.view-more{
+			text-decoration: none;
+			background-color: #7094db; 
+			color: black;
+			padding: 5px;
+			margin-left: 14px;
+			color: black;
+			font-family: 'M PLUS Rounded 1c', sans-serif;
+
+
+		}	
+		.view-more:hover{
+			background-color: #adc6ed; 
+
+		}
+	</style>
+
+	</head> 
+	
+	<body>
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="static/img/logo.jfif" alt="logo"></div>
+				<li><a href="/">Home</a></li>
+				<li><a href="/room">Flat</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+			</ul>
+			<div class="rightNav v-class-resp">
+				<!-- <input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+				 -->
+
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+
+		</nav>
+	<section class="background firstSection">
+		<div class="box-main">
+			<div class="firstHalf">
+				<p class="text-big">Rental Services</p>
+				<p class="text-small">
+					Rent, Search, and Book Property.
+				</p>
+				<br>
+				<p class="text-small">
+				
+					<strong>User Profile:</strong>
+				
+					<br>
+				</p>
+				<br>
+				<p class="text-small">
+					<strong>
+					Email:</strong>
+					
+				</p>
+				<div class="buttons">
+					<button class="btn">My Profile</button>
+					<button class="btn">My Items</button>
+				</div>
+
+			</div>
+			<div class="secondHalf">
+				<img src="static/img/th.jfif" alt="image">
+			</div>
+		</div>
+	</section>		
+	
+	<!-- Heading  -->
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Room <i class='bx bxl-flickr'></i>
+	</h1>
+
+	
+	<a href="/room" class="view-more">
+		View More <i class='bx bxs-right-arrow-square' ></i>
+	</a>
+
+	<div class="table-design">
+		<div class="table-container">
+				<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?id=OIP.uDIHIaqoo1xcUCw1R201BAAAAA&w=197&h=113&c=7&o=6&pid=3.1" alt="image"  class="img-table"></td>
+					</tr>
+					<tr >
+						<td colspan="2" class="table-title">
+							Hall
+						</td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong> Address: </strong> </td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+						
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?q=Rent+a+Flat&w=100&h=100&c=7&rs=1&p=0&o=5&pid=1.7&mkt=en-WW&cc=NP&setlang=en&adlt=moderate&t=1" alt="image" class="img-table"></td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Address:</strong></td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+						
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?q=Badcock+Living+Room&w=100&h=100&c=7&rs=1&p=0&o=5&pid=1.7&mkt=en-WW&cc=NP&setlang=en&adlt=moderate&t=1" alt="image" class="img-table"></td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Address:</strong></td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?q=Room+7&w=100&h=100&c=7&rs=1&p=0&o=5&pid=1.7&mkt=en-WW&cc=NP&setlang=en&adlt=moderate&t=1" alt="image" class="img-table"></td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Address:</strong></td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?q=Rent+a+Flat&w=100&h=100&c=7&rs=1&p=0&o=5&pid=1.7&mkt=en-WW&cc=NP&setlang=en&adlt=moderate&t=1" alt="image" class="img-table"></td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Address:</strong></td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?q=Badcock+Living+Room&w=100&h=100&c=7&rs=1&p=0&o=5&pid=1.7&mkt=en-WW&cc=NP&setlang=en&adlt=moderate&t=1" alt="image" class="img-table"></td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Address:</strong></td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+						
+					</tr>
+				</table>
+		</div>
+	</div>	
+	<hr>
+	
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Vehicle <i class='bx bxl-flickr'></i>
+	</h1>
+
+	<a href="/vehicle" class="view-more">
+			View More <i class='bx bxs-right-arrow-square' ></i>
+		</a>
+	<div class="table-container">
+
+		<div class="table-design">
+			<table>
+				<tr>
+					<td colspan="2">
+						<img src="https://www.bing.com/th?id=Ae0vA5lBhwWG5Zg480x360&w=138&h=110&c=7&rs=1&qlt=80&o=6&cdv=1&pid=Local" alt="image"  class="img-table">
+					</td>
+				</tr>
+				<tr >
+					<td colspan="2" class="table-title">
+						Hall
+					</td>
+				</tr>
+				<tr class="table-center-text">
+					<td><strong> Address: </strong> </td>
+					<td>Kathmandu</td>
+				</tr>
+				<tr class="table-center-text">
+					<td><strong>Price:</strong></td>
+					<td>Rs.2000/-</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="table-center-text">
+						<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+							<strong>
+								View Details
+							</strong>
+						</a>
+					</td>		
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td colspan="2">
+						<img src="https://www.bing.com/th?id=Ae0vA5lBhwWG5Zg480x360&w=138&h=110&c=7&rs=1&qlt=80&o=6&cdv=1&pid=Local" alt="image"  class="img-table">
+					</td>
+				</tr>
+				<tr >
+					<td colspan="2" class="table-title">
+						Hall
+					</td>
+				</tr>
+				<tr class="table-center-text">
+					<td><strong> Address: </strong> </td>
+					<td>Kathmandu</td>
+				</tr>
+				<tr class="table-center-text">
+					<td><strong>Price:</strong></td>
+					<td>Rs.2000/-</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="table-center-text">
+						<a href="/roomDetails"style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+							<strong>
+								View Details
+							</strong>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<hr>
+
+	<h1 class="heading-style" >
+			<i class='bx bxl-flickr'></i> Hall <i class='bx bxl-flickr'></i>
+	</h1>
+
+	<a href="/hall" class="view-more">
+		View More <i class='bx bxs-right-arrow-square' ></i>
+	</a>
+	
+	<div class="table-container">
+		<div class="table-design">
+			<table>
+				<tr>
+					<td colspan="2">
+						<img src="https://www.bing.com/th?id=OIP.uDIHIaqoo1xcUCw1R201BAAAAA&w=197&h=113&c=7&o=6&pid=3.1" alt="image"  class="img-table">
+					</td>
+				</tr>
+				<tr >
+					<td colspan="2" class="table-title">
+						Hall
+					</td>
+				</tr>
+				<tr class="table-center-text">
+					<td><strong> Address: </strong> </td>
+					<td>Kathmandu</td>
+				</tr>
+				<tr class="table-center-text">
+					<td><strong>Price:</strong></td>
+					<td>Rs.2000/-</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="table-center-text">
+						<a href="/roomDetails"style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+							<strong>
+								View Details
+							</strong>
+						</a>
+					</td>
+						
+				</tr>
+			</table>
+			<table>
+					<tr>
+						<td colspan="2"><img src="https://www.bing.com/th?id=Ae0vA5lBhwWG5Zg480x360&w=138&h=110&c=7&rs=1&qlt=80&o=6&cdv=1&pid=Local" alt="image"  class="img-table"></td>
+					</tr>
+					<tr >
+						<td colspan="2" class="table-title">
+							Hall
+						</td>
+					</tr>
+					<tr class="table-center-text">
+						<td><strong> Address: </strong> </td>
+						<td>Kathmandu</td>
+
+					</tr>
+					<tr class="table-center-text">
+						<td><strong>Price:</strong></td>
+						<td>Rs.2000/-</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="table-center-text">
+							<a href="/roomDetails"
+							style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;">
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+						
+					</tr>
+			</table>
+		</div>
+	</div>
+<hr>
+
+	<section class="contact">
+		<h2 class="text-center">
+			Contact Us
+		</h2>
+		<div class="form"> 
+			<input class="form-input" type="text" name="name" id="name" placeholder="Enter your name">
+			<input class="form-input" type="text" name="phone" id="name" placeholder="Enter your Phone">
+			<input class="form-input" type="email" name="email" id="name" placeholder="Enter your email">
+			<textarea class="form-input" name="text" id="text" cols="30" rows="10" placeholder="Enter your message...."></textarea> 
+			<button class="btn btn-sm btn-dark">Submit</button>
+		</div>
+	</section>
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	</body>
+	</html>
+

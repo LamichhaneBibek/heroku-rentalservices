@@ -1,0 +1,247 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../static/css/style.css" />
+
+		<!-- icon link -->
+		<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+
+		<title>Rental services</title>
+
+		<style>
+				/* table text font */
+			@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto:ital@1&display=swap');
+				.heading-style{
+					margin: 20px 15px;
+				}
+
+				.body{
+					background-color: gray;
+				}
+				.table-design{
+					margin: 2px;
+					display: flex;
+
+				}
+				table{
+					margin: 10px;
+						/*min width - trial*/
+					min-width: 210px;
+					background-color:#e6eefc ;
+					border-radius: 5px;
+					border-top: 4px solid #7094db;
+					border-left:1px solid  #7094db ;
+					border-right:1px solid  #7094db ;
+					border-bottom:1px solid  #7094db ;
+				}
+				table:hover{
+					background-color: #adc6ed;
+					border-top: 4px solid #adc6ed;
+				}
+
+
+
+				td{
+					padding: 5px 10px;
+					text-align: center;
+					font-size: 15px;
+					color: black;
+					text-align: left;
+					font-family: 'Lato', sans-serif;
+
+				}
+
+			 			/* google font link */
+			 			@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+
+
+				.table-container{
+					display: flex;
+					flex-direction: row;
+					/*background-color:#686868;*/
+					flex-wrap: wrap;
+					/*justify-content:flex-start;*/
+
+				}
+		</style>
+	</head>
+
+	<body>
+
+	<!-- ......vehcile list ...........  -->
+
+	<!-- Heading  -->
+		<h1 class="heading-style" style="font-family: 'Koulen', cursive; text-align: center; ">
+			Your Vehicle Booked by other:
+		</h1>
+		{% if valuesVehicle %}
+		<!-- table content -->
+		<div class="table-design">
+			<div class="table-container">
+
+				{% for v in valuesVehicle %}
+				<table>
+					<tr>
+						<td colspan="2" style="text-align:center; background-color:lightblue;" >
+							<strong>Rental services</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Booking Id - {{v.0}}(Vehicle)
+						</td>
+						<td>{{v.2}}</td>
+					</tr>
+					<tr>
+						<td>
+							Booked On - 22
+						</td>
+						<td>
+							Booked For - 22
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Vehicle Id: {{v.1}}
+							
+						</td>
+						<td colspan="2">
+							Vehicle number -{{v.3}}
+						</td>
+					</tr>
+
+					<tr>
+						<td>Price Paid: Rs.{{v.7}}</td>
+						
+					</tr>
+					<tr>
+						<td>Customer Address:</td>
+						<td colspan="2">{{v.4}},{{v.5}}</td>
+					</tr>
+					
+					<tr>
+						<td>Customer ID -{{v.13}}</td>
+						<td>Customer name -{{v.14}} {{v.15}}</td>
+						
+					</tr>
+					<tr>
+						<td colspan="2">Customer Contact: {{v.16}}</td>
+					</tr>
+					<tr>	
+						<td colspan="2">Customer Email-{{v.17}}</td>
+					</tr>
+					<!-- <tr>
+						<td colspan="3" class="table-center-text">
+							<a
+								href="#"
+								style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;"
+							>
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+					</tr> -->
+				</table>
+				{% endfor %}
+			</div>
+		</div>
+		{% else %}
+		<h4 class="heading-style" style="font-family: 'Koulen', cursive; text-align: center; ">
+			No One has Booked yet..!
+		</h4>
+			{% endif %}
+
+
+		<!-- ......... hall list ..............  -->
+
+
+		<h1 class="heading-style" style="font-family: 'Koulen', cursive; text-align: center; ">
+			Your Hall Booked by other:
+			
+		</h1>
+
+		{% if valuesHall %}
+		<!-- table content -->
+		<div class="table-design">
+			<div class="table-container">
+				{% for h in valuesHall %}
+				<table>
+					<tr>
+						<td colspan="2" style="text-align:center; background-color:lightblue;">
+							<strong>Rental services</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Booking Id - {{h.0}} (Hall)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Booked On - {{h.17}}
+						</td>
+						<td>
+							Booked For - {{h.16}}
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Hall Id: {{h.1}}
+							
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Hall Name:{{h.2}}</td>
+					</tr>
+					<tr>
+						<td>Hall Address:</td>
+						<td colspan="2">{{h.3}}, {{h.4}}</td>
+					</tr>
+					<tr>
+						<td>Price Paid: Rs.{{h.5}}</td>
+						
+					</tr>
+					<tr>
+					<td>Customer ID -{{h.11}}</td>
+					<td>Customer name -{{h.12}} {{h.13}}</td>
+
+					</tr>
+					<tr>
+						<td colspan="2">Customer Contact: {{h.14}}</td>
+					</tr>
+					<tr>	
+						<td colspan="2">Customer Email- {{h.15}}</td>
+					</tr>
+					<!-- <tr>
+						<td colspan="3" class="table-center-text">
+							<a
+								href="#"
+								style=" text-decoration: none;
+							background-color: #7094db; color:black; padding:5px 30px;border-radius: 5px;"
+							>
+								<strong>
+									View Details
+								</strong>
+							</a>
+						</td>
+					</tr> -->
+				</table>
+				{% endfor %}
+			</div>
+		</div>
+		{% else %}
+		<h4 class="heading-style" style="font-family: 'Koulen', cursive; text-align: center; ">
+			No One has Booked yet..!
+		</h4>
+		
+	{% endif %}
+
+		<footer class="background">
+			<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+		</footer>
+		<script src="static/js/resp.js"></script>
+	</body>
+</html>

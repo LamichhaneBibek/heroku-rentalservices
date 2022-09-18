@@ -1,0 +1,271 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="static/css/style.css">
+	
+		<title>Rental services</title>
+		<!--bootstrap link  -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+ 		<!-- icon link --> 
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+		<style>
+
+
+	   		/* google font link */
+	   		@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Padauk&family=Shadows+Into+Light&display=swap');
+	  
+			/* table heading font */
+			@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+			/* table text font */
+			@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Teko&display=swap');
+
+			.heading-style{
+				margin: 20px 15px;
+				font-family: 'Koulen', cursive;
+				text-align: center;
+				/*text-decoration: underline  #7094db  4px;*/
+			}
+
+			
+			.text-container{
+				display: flex;
+				flex-direction: row;
+				background-color:#e6eefc;
+				flex-wrap: wrap;
+				margin: 10px;
+			}
+			table{
+				width: 250px;
+				margin: auto;
+			}	
+			td{
+				margin: 10px;
+				padding: 10px 5px ;
+				text-align: left;
+				border-bottom: 2px solid black;
+			}
+			.edit-button{
+				padding: 5px 10px;
+				background-color: transparent;
+				border-radius: 5px;
+				border:2px solid black;
+				cursor: pointer;
+
+			}
+			.edit-button:hover{
+				background-color: #adc6ed;
+			}
+			.input-box{
+				width:114px;
+				height: 30px;
+				/*border-radius: 10px;*/
+				border-bottom: 2px solid black;
+				border-top: none;
+				border-left: none;
+				border-right: none;
+				background-color: transparent;
+			}
+			.text-heading-l{
+					font-size: 25px;
+					text-align: center;
+					margin: 5px;
+					font-family: 'Roboto Mono', monospace;
+				}
+		</style>
+
+	</head> 
+	
+	<body>
+		<nav class="navbar background h-nav-resp">
+			<ul class="nav-list v-class-resp" >
+				<div class="logo"><img src="static/img/logo.jfif" alt="logo"></div>
+				<li><a href="/">Home</a></li>
+				<li><a href="/room">Flat</a></li>
+				<li><a href="/vehicle">Vehicle</a></li>
+				<li><a href="/hall">Hall</a></li>
+				{% if result['loged_in_user'] %}
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				{% endif %}
+				</ul>
+			<div class="rightNav v-class-resp">
+				<!-- <input type="text" name="search" id="search">
+				<button class="btn btn-sm">Search </button>
+				 -->
+
+			</div>
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+
+		</nav>
+	
+		<div class="heading-style text-heading-l"  >	
+			Profile
+		</div>
+		<!-- error for image -->
+		<div class="alert alert-warning alert-dismissible fade show" role="alert" style="height: 60px;">
+  			<strong>
+  				{% with messages =get_flashed_messages() %}
+                	{% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                    </ul>
+                  	{% endif %}
+             	{% endwith %}
+  			</strong> 
+  			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+		<div class="text-container">
+			{% if result['loged_in_user'] %}
+			<table>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<img src="{{result['loged_in_user'].7}}" alt="image" style="border-radius:10%; width:200px;" class="img-table">
+					</td>
+					
+				</tr>
+			
+				<tr>
+					<td>
+						<strong> 
+							First Name:
+						</strong>
+					</td>
+					<td>
+						{{result['loged_in_user'].1}}</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							Last Name:
+						</strong>
+					</td>
+					<td>{{result['loged_in_user'].2}}</td>
+				</tr>
+				<tr>	
+					<td><strong> Email: </strong> </td>
+					<td>{{result['loged_in_user'].3}}</td>
+				</tr>
+				<tr>	
+					<td><strong> Address: </strong> </td>
+					<td>{{result['loged_in_user'].4}}</td>
+				</tr>
+				<tr>	
+					<td><strong> District: </strong> </td>
+					<td>{{result['loged_in_user'].5}}</td>
+				</tr>
+				<tr>	
+					<td><strong>Phone Number: </strong> </td>
+					<td>{{result['loged_in_user'].6}}</td>
+				</tr>
+			</table>
+			{% endif %} 
+		
+		<table>
+			<tr>
+				<form action="/changeProfile" method="POST" enctype="multipart/form-data">
+					<td colspan="2" style="padding:5px 10px;text-align: center;">
+						<label>Change Profile Picture</label>
+						<br>
+						<br>
+						<input type="file" name="file" autocomplete="off" required  >
+					 </td>
+					 <td>
+					 	<button type="submit"  class="edit-button">
+					 		<i class='bx bxs-edit'></i>Edit
+					 	</button>  
+					 </td>
+				</form>			
+			</tr>
+			<tr >
+				<form action="/fname" method="POST" enctype="multipart/form-data">
+					<td><strong> First Name: </strong> 
+					</td>
+					<td><input type="text" name="fname" class="input-box" required>
+					</td>
+					<td>
+				 		<button type="submit"  class="edit-button">
+							<i class='bx bxs-edit'></i>Edit
+				 		</button>  
+					</td>
+				</form>	
+			</tr>
+			<tr>
+				<form action="/changelname" method="POST" enctype="multipart/form-data">
+					<td><strong> Last Name: </strong> </td>
+					<td><input type="text" name="lname" class="input-box" required></td>
+					<td>
+					 	<button type="submit"  class="edit-button">
+					 		<i class='bx bxs-edit'></i>Edit
+					 	</button>  
+					</td>
+				</form>	
+			</tr>
+			<tr>	
+				<form action="/address" method="POST" enctype="multipart/form-data">
+					<td><strong> Address: </strong> </td>
+					<td><input type="text" name="address" class="input-box" required></td>
+					<td>
+						<button type="submit"  class="edit-button">
+							<i class='bx bxs-edit'></i>Edit	
+						</button>  
+					</td>
+				</form>	
+			</tr>
+			<tr>	
+				<form action="/district" method="POST" enctype="multipart/form-data">
+					<td><strong> District: </strong> </td>
+					<td><input type="text" name="district" class="input-box" required></td>
+					<td>
+						<button type="submit"  class="edit-button">
+							<i class='bx bxs-edit'></i>Edit
+						</button>  
+					</td>
+				</form>	
+			</tr>
+			<tr>
+				<form action="/phonenumber" method="POST" enctype="multipart/form-data">
+	
+				<td><strong>Phone Number: </strong> </td>
+				<td><input type="tel" placeholder="98########" required pattern="[0-9]{4}[0-9]{6}"  name="phonenumber" class="input-box"></td>
+				<td>
+					<button type="submit"  class="edit-button">
+						<i class='bx bxs-edit'></i>Edit
+					</button>  
+				</td>
+				</form>	
+			</tr>
+		</table>
+
+
+<table style="align-content: center; width: 1000px;">
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+
+</table>	
+</div>	
+	
+	<footer class="background">
+		<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+	</footer>
+	<script src="static/js/resp.js" ></script>	
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+	</body>
+	</html>
+

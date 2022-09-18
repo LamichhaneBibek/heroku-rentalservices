@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verify Through OTP</title>
+    <style type="text/css">
+          @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        align-items: center;
+        justify-content: center;
+        background-color: #ade5f9;
+        min-height: 100vh;
+      }
+
+      /* Utilities */
+      .card::after,
+      .card img {
+        border-radius: 50%;
+      }
+      body,
+      .card,
+      .stats {
+        display: grid;
+      }
+
+      .card {
+        padding: 2.5rem 2rem;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        max-width: 500px;
+        height: 300px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+        margin: 1rem;
+        position: relative;
+        transform-style: preserve-3d;
+        overflow: hidden;
+      }
+      .card::before,
+      .card::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+      }
+      .card::before {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        top: -0.7rem;
+        left: -0.7rem;
+      }
+      .card::after {
+        height: 15rem;
+        width: 15rem;
+        background-color: #4172f5aa;
+        top: -8rem;
+        right: -8rem;
+        box-shadow: 2rem 6rem 0 -3rem #fff;
+      }
+
+      .container {
+        position: relative;
+        /* margin-left: 50px;
+        margin-top: 50px; */
+      }
+      input {
+        text-align: center;
+        line-height: 1.8rem;
+        width: 250px;
+        font-size: 15px;
+        border-radius: 45px;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      .container__input:not(:placeholder-shown) + .container__label {
+        background: #fff;
+        transform: translate(0, -50%);
+        opacity: 1;
+      }
+
+      .container__label {
+        left: 8px;
+        position: absolute;
+        top: 0;
+        padding: 5px;
+
+        opacity: 0;
+        transition: all 200ms;
+      }
+
+      .button {
+        /* padding: 1.3em 3em; */
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 400;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        padding: 10px;
+      }
+      button:hover {
+        background-color: #23c483;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+      }
+
+      button:active {
+        transform: translateY(-1px);
+      }
+
+      @media screen and (max-width: 450px) {
+        .card {
+          display: block;
+        }
+      }
+    </style>
+</head>
+
+<body>
+    <form action="/doVerifyEmail" method="post">
+        {{msg}}
+        <div class="card">
+        <h3>Enter Your Email</h3>
+        <div class="container">
+        
+        <br>
+        <br>
+        <input type="email" name="gmail" class="container__input" required>
+        <label class="container__label">Enter Your Email</label>
+        <br>
+        <br>
+        <button type="submit" class="button">Send OTP</button>
+    </form>
+</body>
+
+</html>

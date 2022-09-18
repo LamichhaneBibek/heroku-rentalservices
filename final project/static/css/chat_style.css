@@ -1,0 +1,189 @@
+body
+{
+    padding: 30px;
+    padding-top: 20px;
+}
+.sbs-main /*side by side*/
+{
+    float:left;
+    width:100%;    
+    margin-bottom: 10%;
+}
+.sbs /*side by side*/
+{
+    float: left;
+}
+.input
+{
+    width: 30%;
+}
+.col-in
+{
+    width: 60%;
+}
+.lab
+{
+    min-width: fit-content;
+    max-width: 200px;
+}
+.row-in
+{
+    padding-bottom: 5px;
+}
+table
+{
+    border: 1px solid ;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 10px;
+}
+th
+{
+    border: 1px solid ;
+}
+td
+{
+    border: 1px solid ;
+    padding:5px;
+}
+
+
+.log-head
+{
+    margin: 10px;
+    text-align: center;
+    width: auto;
+    height: 200px;
+    margin-bottom: 40px;
+}
+.log-sub
+{
+    margin-left :5%;
+    margin-right:5%; 
+    float:left;
+    width:40%;
+    height:auto;
+    text-align: center;
+}
+#log-right
+{
+    margin-left:0px;
+    padding-left:2%;
+    border-left: 1px solid #e5e5e5;
+    
+}
+.log-input
+{
+    margin-left: 25%;
+    margin-top: 20px;
+}
+#btn-me
+{
+    margin-left: 0px;
+    margin-top: 20px;
+}
+.layout-head
+{
+    width: auto;
+    height: 100px;
+    text-align: center;
+}
+.filter-sub
+{
+    width:100%;
+}
+.sele /*select tag*/
+{
+    width:20%;
+    margin-right: 30px;
+}
+.nevg /* left side nevigation list*/
+{
+    width: 20%;
+    min-height: 1px;
+    padding-right: 20px;
+}
+.layout-main
+{
+    width: 80%;
+    padding: 20px;
+    border-left: 1px solid #e5e5e5;
+}
+.layout-view
+{
+    width: 100%;
+}
+.table-me
+{
+    font-size: 0.8rem;
+    padding: 0.5rem;
+}
+.proceed
+{
+    text-align: center;
+    align-content: center;
+    float: center;
+    margin-bottom: 30px;
+}
+.below-hr
+{
+    padding-top: 10px;
+}
+#CO-stat
+{
+    width: 30%;
+}
+.CO-th
+{
+    width: 7%;
+}
+#COS-th
+{
+    width: 30%;
+}
+.td-in
+{
+    width: 100%;
+    padding-left:  .15rem;
+    padding-right: .01rem;
+}
+#CO-add
+{
+    border-top: 1px solid black;
+}
+h1
+{
+    font-size: 3.5rem !important; 
+    margin: 0 5%;
+}
+
+@media screen and (max-width: 750px){
+    .app {
+        top: 0 !important;
+        height: 100% !important;
+    }
+    .conversation {
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 100%;
+        /*width: 100%;*/
+        border-left: 1px solid rgba(0, 0, 0, .08);
+        /*overflow-y: auto;*/
+    }
+    .input{
+        width: 80% !important;
+    }
+    .sbs-main{
+        float: none !important;
+        overflow-y: auto !important;
+
+    }
+    .log-sub
+    {
+        float: none !important;
+        width: 90% !important;
+        margin-bottom: 20% !important;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+}

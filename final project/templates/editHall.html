@@ -1,0 +1,219 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- icon link -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- home page style -->
+		<link rel="stylesheet" href="../static/css/style.css">
+	
+		<title>Rental services</title>
+	  
+    <!-- form to add style -->
+    <link rel="stylesheet" href="../static/css/add_hall_style.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+      .main-container{
+        width: 100%;
+        display: flex;
+        background-color: #686868;
+        flex-direction: column;
+       
+      }
+
+        .card{
+          width:200px;  
+          height:auto;
+          background-color: #8cd9b3; 
+          padding:8px;
+          margin:10px;
+          border-radius:10px;
+          text-align:center;
+      }
+      .card-container{
+        width: 100%;
+          display:flex;
+          flex-direction:row;
+          background-color:#686868  ;
+          flex-wrap:wrap;
+          justify-content:flex-start;
+           margin: auto;
+      }
+    
+
+
+
+    </style>
+	</head> 
+	
+	<body>
+		<div class="main-container">
+			<nav class="navbar background h-nav-resp">
+  			<ul class="nav-list v-class-resp" >
+  				<div class="logo"><img src="static/img/logo-search-grid-1x.png" alt="logo"></div>
+  				<li><a href="/home">Home</a></li>
+  				<li><a href="/room">Flat</a></li>
+  				<li><a href="/vehicle">Vehicle</a></li>
+  				<li><a href="/hall">Hall</a></li>
+          {% if result['loged_in_user'] %}
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+          {% endif %} 
+  			</ul>
+  			<div class="rightNav v-class-resp">
+  				<!-- <input type="text" name="search" id="search">
+  				<button class="btn btn-sm">Search </button> -->
+  			</div>
+  			<div class="burger">
+  				<div class="line"></div>
+  				<div class="line"></div>
+  				<div class="line"></div>
+  			</div>
+			</nav>
+
+
+   
+
+	    <div class="card-container">
+      	<a href="/hall" style=" text-decoration:none; color:black; ">
+          <div class="card" style="background-color: #f2f6fa;">
+               <i class='bx bx-show' ></i> Show Hall
+          </div>
+        </a>
+        
+        <a href="/addHall" style=" text-decoration:none; color:black;" >
+          <div class="card" style="background-color:#6699ff;">
+              <i class='bx bx-message-square-add' ></i> Add Hall
+          </div>
+        </a>
+
+
+        <a href="#" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color:#f2f6fa;">
+              <i class='bx bx-search-alt-2' ></i> Find Hall
+          </div>
+        </a>
+
+    
+        <a href="#" style=" text-decoration:none; color:black;">
+          <div class="card" style="background-color: #f2f6fa;">
+              <i class='bx bx-edit' ></i> My Hall
+          </div>
+        </a>
+    
+  	  </div>
+  	<br>
+    <hr>
+    <br>
+    <div class="container" style="margin: auto;">
+    <div class="title">Register Hall</div>
+      <div class="content">
+        <!-- <br> -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p>    
+                {% with messages =get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+             {% endwith %}               
+          </p>
+
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+
+        <form action="/updateHall/{{result['hall'].0}}" method="POST"  enctype="multipart/form-data">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Hall Name</span>
+              <input type="text" name="hall_name" placeholder="Enter your hall name"  value="{{ result['hall'].1 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Hall Address</span>
+              <input type="text" name="hall_address" placeholder="Enter your hall address" value="{{ result['hall'].2 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">District</span>
+              <input type="text" name="hall_district" placeholder="Enter your hall district" value="{{ result['hall'].3 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Hall Price</span>
+              <input type="text" name="hall_price" placeholder="Enter your hall price" value="{{ result['hall'].4 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Contact Number</span>
+              <input type="text" name="contact_number" placeholder="Enter your contact number" value="{{ result['hall'].5 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Person Capacity</span>
+              <input type="text" name="person_capacity" placeholder="Enter your person capacity" value="{{ result['hall'].6 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Parking Capacity for Two wheeler</span>
+              <input type="text" name="parking_2wheel" placeholder="Enter parking capacity for bike,scooter,..." value="{{ result['hall'].7 }}" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Parking 
+              Capacity for Four wheeler</span>
+              <input type="text" name="parking_4wheel" placeholder="Enter parking capacity for car,jeep,..." value="{{ result['hall'].8 }}" required>
+            </div>
+
+            <div class="input-box">
+              <span class="details">Description</span>
+              <textarea name="hall_description"  value="{{ result['hall'].8 }}" cols="98" rows="10" required style="padding:5px ;"></textarea>
+              
+<!--               <input type="text" name="hall_description" placeholder="Additional details of" value="{{ result['hall'].9 }}" required> -->
+            </div>
+          </div>
+         
+          <div class="checklist-title">Select Category:</div>
+          <input type="checkbox" id="category1" name="category" value="Meeting Hall">
+          <label for="category1"> Meeting Hall</label>
+          <br>
+          <input type="checkbox" id="category2" name="category" value="Conference Hall">
+          <label for="category2"> Conference Hall</label>
+          <br>
+          <input type="checkbox" id="category3" name="category" value="Party Palace">
+          <label for="category3">Party Palace</label>
+          <hr>                    
+          <br>
+       
+          <br> 
+          <hr>
+          <div class="button">
+            <input type="submit" value="Update Details">
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+			<!-- <section class="contact">
+		<h2 class="text-center">
+			Contact Us
+		</h2>
+		<div class="form"> 
+			<input class="form-input" type="text" name="name" id="name" placeholder="Enter your name">
+			<input class="form-input" type="text" name="phone" id="name" placeholder="Enter your Phone">
+			<input class="form-input" type="email" name="email" id="name" placeholder="Enter your email">
+			<textarea class="form-input" name="text" id="text" cols="30" rows="10" placeholder="Enter your message...."></textarea> 
+			<button class="btn btn-sm btn-dark">Submit</button>
+		</div>
+			</section> -->
+			<footer class="background">
+				<p class="text-footer">Copyright &copy; 2027 - All rights reserved</p>
+			</footer>
+		</div>
+		<script src="js/resp.js" ></script>	
+	</body>
+</html>
+
