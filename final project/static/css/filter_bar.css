@@ -1,0 +1,10 @@
+
+.filter-container{
+	display: flex;
+	flex-direction: row;
+	background-color:black;
+	flex-wrap: wrap;
+}
+.input-box{
+background-color:whitesmoke;
+ color: black;}
